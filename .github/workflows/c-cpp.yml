@@ -14,7 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: echo
-      run: ./dumdum.sh
+      run: |
+        echo "${GITHUB_REF}" >some.txt
+        cat some.txt
 
            #---
            #name: "tagged-release"
