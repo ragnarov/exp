@@ -11,8 +11,10 @@ jobs:
   dosomething:
     name: Create the File
     runs-on: ubuntu-latest
-    run: |
-      echo 'awesome' >some.txt
+    steps:
+    - name: File creation step
+      run: |
+       echo 'awesome' >some.txt
 
 
   build:
