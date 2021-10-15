@@ -14,12 +14,13 @@ jobs:
     steps:
     - name: File creation step
       run: |
-       echo 'awesome' >some.txt
+        mkdir 'artifact'
+        echo 'awesome' >'artifact/some.txt'
 
     - uses: actions/upload-artifact@master
       with:
         name: some_artifact
-        path: ./some.txt
+        path: ./artifact/
 
 
   build:
@@ -32,7 +33,7 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: some_artifact
-        path: ./some.txt
+        path: ./artifact/
     - run: cat ./some.txt
 
     - uses: actions/checkout@master
@@ -43,4 +44,4 @@ jobs:
       with:
         args: MyReleaseMessage
         files: |
-          some.txt
+          'artifact/some.txt'
