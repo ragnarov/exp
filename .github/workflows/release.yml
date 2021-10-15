@@ -34,7 +34,7 @@ jobs:
       with:
         name: some_artifact
         path: ./artifact/
-    - run: cat ./some.txt
+    - run: cat 'artifact/some.txt'
 
     - uses: actions/checkout@master
     - name: Create a Release
