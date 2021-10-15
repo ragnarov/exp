@@ -8,8 +8,16 @@ on:
       - "v*"
 
 jobs:
+  dosomething:
+    name: Create the File
+    runs-on: ubuntu-latest
+    run: |
+      echo 'awesome' >some.txt
+
+
   build:
     runs-on: ubuntu-latest
+    needs: dosomething
     steps:
     - uses: actions/checkout@master
     - name: Create a Release
@@ -18,3 +26,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         args: MyReleaseMessage
+        files: |
+          some.txt
