@@ -19,7 +19,7 @@ jobs:
     - uses: actions/upload-artifact@master
       with:
         name: some_artifact
-        path: some.txt
+        path: ./some.txt
 
 
   build:
@@ -32,8 +32,8 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: some_artifact
-        path: some.txt
-    - run: cat some.txt
+        path: ./some.txt
+    - run: cat ./some.txt
 
     - uses: actions/checkout@master
     - name: Create a Release
