@@ -16,11 +16,25 @@ jobs:
       run: |
        echo 'awesome' >some.txt
 
+    - uses: actions/upload-artifact@master
+      with:
+        name: some_artifact
+        path: some.txt
+
 
   build:
     runs-on: ubuntu-latest
     needs: dosomething
     steps:
+
+    - uses: actions/checkout@master
+
+    - uses: actions/download-artifact@master
+      with:
+        name: some_artifact
+        path: some.txt
+    - run: cat some.txt
+
     - uses: actions/checkout@master
     - name: Create a Release
       uses: elgohr/Github-Release-Action@master
