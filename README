@@ -22,9 +22,9 @@ DUM DUM
 #
 #       Probably any object that show up on github (when starting with '-')
 #       In that case maybe one can call objects that don't start with '-'
-#       a sub step ---> Not sure about this
+#       a substeps ---> Not sure about this
 #       For instance: 'run:' inside '- name:' here 'run:' is the substep
-#       this sub step thing doesn't matter
+#       this substep thing doesn't matter
 #       named Steps are useful for only making debugging the actions easier
 #       for the same reason named job is also nice to have
 #       ;)
