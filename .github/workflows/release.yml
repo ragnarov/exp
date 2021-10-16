@@ -18,13 +18,15 @@ jobs:
         echo "SHA: ${GITHUB_SHA}"
         ls
 
+    - name: test
+      run: |
+        ls
+
     - name: Transfer files to next job
       uses: actions/download-artifact@master
       with:
         name: some_artifact
         path: ./artifact/
-      run: |
-        ls
 
 
   release_the_kraken:
