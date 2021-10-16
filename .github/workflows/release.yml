@@ -35,7 +35,7 @@ jobs:
     needs: dosomething
     steps:
     - name: Transfer files from previous job
-      uses: actions/checkout@master
+#      uses: actions/checkout@master
       uses: actions/download-artifact@master
       with:
         name: some_artifact
