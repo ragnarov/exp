@@ -32,6 +32,7 @@ jobs:
     steps:
     - name: Do Nothing
       uses: actions/checkout@v2
+    - name: Set GIT_TAG
       run: |
         echo "${GITHUB_REF##*/}" >> $GIT_TAG
 
