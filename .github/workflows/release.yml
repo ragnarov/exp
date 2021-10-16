@@ -16,7 +16,7 @@ jobs:
       run: |
         mkdir 'artifact'
         echo 'awesome!' >'artifact/some.txt'
-        echo "${GITHUB_BASE_REF}"
+        echo "$GITHUB_BASE_REF"
 
     - uses: actions/upload-artifact@master
       with:
