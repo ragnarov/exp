@@ -2,8 +2,9 @@ name: "tagged-release"
 
 on:
   push:
+    # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*'
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   dosomething:
@@ -16,7 +17,7 @@ jobs:
         echo 'awesome!' >'artifact/some.txt'
         echo "SHA: ${GITHUB_SHA}"
 
-    - name: Transfer files to next job
+#   - name: Transfer files to next job
     - uses: actions/upload-artifact@master
       with:
         name: some_artifact
@@ -30,7 +31,7 @@ jobs:
 
     - uses: actions/checkout@master
 
-    - name: Transfer files from previous job
+#    - name: Transfer files from previous job
     - uses: actions/download-artifact@master
       with:
         name: some_artifact
