@@ -2,12 +2,13 @@ name: "tagged-release"
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
 
 jobs:
   dosomething:
-    if: github.event.base_ref == 'refs/heads/main'
     name: Create the File
     runs-on: ubuntu-latest
     steps:
@@ -15,6 +16,7 @@ jobs:
       run: |
         mkdir 'artifact'
         echo 'awesome!' >'artifact/some.txt'
+        echo "${GITHUB_BASE_REF}"
 
     - uses: actions/upload-artifact@master
       with:
@@ -23,7 +25,6 @@ jobs:
 
 
   build:
-    if: github.event.base_ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: dosomething
     steps:
