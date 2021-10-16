@@ -42,9 +42,6 @@ jobs:
         name: some_artifact
         path: ./artifact/
 
-          #    - name: Echo
-          #      run: |
-          #        echo ${{ $GIT_TAG }}
 
     - name: Create a Release
       uses: elgohr/Github-Release-Action@master
