@@ -23,7 +23,7 @@ jobs:
         ls
 
     - name: Transfer files to next job
-      uses: actions/download-artifact@master
+      uses: actions/upload-artifact@master
       with:
         name: some_artifact
         path: ./artifact/
