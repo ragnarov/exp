@@ -2,9 +2,11 @@ name: "tagged-release"
 
 on:
   push:
+    branch:
+      - main
     # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    #    tags:
+    #      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   dosomething:
@@ -42,9 +44,14 @@ jobs:
         name: some_artifact
         path: ./artifact/
 
-    - name: Create a Release
-      uses: elgohr/Github-Release-Action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        args: $GIT_TAG
+    - name: Echo
+      run: |
+        echo ${{ GIT_TAG }}
+        echo ${{ $GIT_TAG }}
+
+          #    - name: Create a Release
+          #      uses: elgohr/Github-Release-Action@master
+          #      env:
+          #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #      with:
+          #        args: ${{ $GIT_TAG }}
