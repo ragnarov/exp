@@ -32,9 +32,9 @@ jobs:
     steps:
     - name: Do Nothing
       uses: actions/checkout@v2
-    - name: Set GIT_TAG
-      run: |
-        echo "GIT_TAG=${GITHUB_REF##*/}" >> $GITHUB_ENV
+    - name: Set steps.get_version.outputs.VERSION
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
 
     - name: Transfer files from previous job
       uses: actions/download-artifact@master
@@ -48,4 +48,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        args: sigh
+        args: ${{ steps.get_version.outputs.VERSION }}
