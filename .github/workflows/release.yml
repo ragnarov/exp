@@ -18,7 +18,7 @@ jobs:
         echo 'awesome!' >'artifact/some.txt'
         echo 'meow'
         echo "SHA: ${GITHUB_SHA}"
-        echo ${{github.base_ref}}
+        echo ${{github.ref}}
 
     - uses: actions/upload-artifact@master
       with:
