@@ -16,13 +16,15 @@ jobs:
         mkdir 'artifact'
         echo 'awesome!' >'artifact/some.txt'
         echo "SHA: ${GITHUB_SHA}"
+        ls
 
-          #    - uses: actions/upload-artifact@master
     - name: Transfer files to next job
       uses: actions/download-artifact@master
       with:
         name: some_artifact
         path: ./artifact/
+      run: |
+        ls
 
 
   release_the_kraken:
@@ -30,9 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: dosomething
     steps:
-    - uses: actions/checkout@master
-      #    - uses: actions/download-artifact@master
     - name: Transfer files from previous job
+      uses: actions/checkout@master
       uses: actions/download-artifact@master
       with:
         name: some_artifact
