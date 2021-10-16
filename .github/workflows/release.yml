@@ -17,28 +17,27 @@ jobs:
         echo 'awesome!' >'artifact/some.txt'
         echo "SHA: ${GITHUB_SHA}"
 
-#   - name: Transfer files to next job
     - uses: actions/upload-artifact@master
+    - name: Transfer files to next job
       with:
         name: some_artifact
         path: ./artifact/
 
 
-  build:
+  release_the_kraken:
+    name: Publish the release
     runs-on: ubuntu-latest
     needs: dosomething
     steps:
-
     - uses: actions/checkout@master
-
-#    - name: Transfer files from previous job
     - uses: actions/download-artifact@master
+    - name: Transfer files from previous job
       with:
         name: some_artifact
         path: ./artifact/
     - run: cat 'artifact/some.txt'
 
-    - uses: actions/checkout@master
+#    - uses: actions/checkout@master
     - name: Create a Release
       uses: elgohr/Github-Release-Action@master
       env:
