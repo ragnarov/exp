@@ -32,6 +32,8 @@ jobs:
     steps:
     - name: Do Nothing
       uses: actions/checkout@v2
+      run: |
+        echo "${GITHUB_REF##*/}" >> $GIT_TAG
 
     - name: Transfer files from previous job
       uses: actions/download-artifact@master
@@ -44,6 +46,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        args: ${GITHUB_REF##*/}
-        files: |
-          'artifact/some.txt'
+        args: $GIT_TAG
