@@ -17,8 +17,9 @@ jobs:
         echo 'awesome!' >'artifact/some.txt'
         echo "SHA: ${GITHUB_SHA}"
 
-    - uses: actions/upload-artifact@master
+          #    - uses: actions/upload-artifact@master
     - name: Transfer files to next job
+      uses: actions/download-artifact@master
       with:
         name: some_artifact
         path: ./artifact/
@@ -30,8 +31,9 @@ jobs:
     needs: dosomething
     steps:
     - uses: actions/checkout@master
-    - uses: actions/download-artifact@master
+      #    - uses: actions/download-artifact@master
     - name: Transfer files from previous job
+      uses: actions/download-artifact@master
       with:
         name: some_artifact
         path: ./artifact/
