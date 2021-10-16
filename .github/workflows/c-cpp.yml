@@ -1,22 +1,22 @@
-name: C/C++ CI
-
-on:
-  push:
-    branches: [ dev ]
-  pull_request:
-    branches: [ dev ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: echo
-      run: |
-        echo "${GITHUB_REF}" >some.txt
-        cat some.txt
+#name: C/C++ CI
+#
+#on:
+#  push:
+#    branches: [ dev ]
+#  pull_request:
+#    branches: [ dev ]
+#
+#jobs:
+#  build:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#    - uses: actions/checkout@v2
+#    - name: echo
+#      run: |
+#        echo "${GITHUB_REF}" >some.txt
+#        cat some.txt
 
            #---
            #name: "tagged-release"

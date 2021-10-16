@@ -16,6 +16,7 @@ jobs:
         mkdir 'artifact'
         echo 'awesome!' >'artifact/some.txt'
         echo "SHA: ${GITHUB_SHA}"
+        echo "${GITHUB_REF}"
         ls
 
     - name: Transfer files to next job

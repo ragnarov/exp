@@ -28,4 +28,6 @@ DUM DUM
 #       named Steps are useful for only making debugging the actions easier
 #       for the same reason named job is also nice to have
 #       ;)
+#
+# *   Note that '|' in syntax enables to declare a multi-line string.
 #==============================================================================
