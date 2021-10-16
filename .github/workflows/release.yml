@@ -16,7 +16,6 @@ jobs:
         mkdir 'artifact'
         echo 'awesome!' >'artifact/some.txt'
         echo "SHA: ${GITHUB_SHA}"
-        echo "${GITHUB_REF}"
         ls
 
     - name: Transfer files to next job
@@ -34,48 +33,17 @@ jobs:
     - name: Do Nothing
       uses: actions/checkout@v2
 
-#============================== Syntax of Steps ================================
-#   - name: something 
-#           creates a new step with name 'something' when displayed on github
-#
-#     run:  this run will appear inside 'something' (on github) because,
-#           it doesn't have a '-' at the beginning
-#           use: same as run, will appear inside 'something' on github
-#
-# *   an object appearing inside 'steps:' after '- name:' will
-#     appear inside '- name:' when displayed on github
-#
-#   - run: This run will be treated as an independent step
-#          that means it will not appear inside 'something'
-#          because it has a '-' before it
-# *   an object that begins with a '-' (after steps:)
-#     will appear inside steps as an independent step of the job
-#
-#     Q: What is a step?
-#     Ans: Undefined
-#
-#       Probably any object that show up on github (when starting with '-')
-#       In that case maybe one can call objects that don't start with '-'
-#       a sub step ---> Not sure about this
-#       For instance: 'run:' inside '- name:' here 'run:' is the substep
-#       this sub step thing doesn't matter
-#       named Steps are useful for only making debugging the actions easier
-#       for the same reason named job is also nice to have
-#       ;)
-#==============================================================================
-
     - name: Transfer files from previous job
       uses: actions/download-artifact@master
       with:
         name: some_artifact
         path: ./artifact/
-    - run: cat 'artifact/some.txt'
 
     - name: Create a Release
       uses: elgohr/Github-Release-Action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        args: MyReleaseMessage
+        args: DRAFT "${GITHUB_REF}"
         files: |
           'artifact/some.txt'
