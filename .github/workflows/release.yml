@@ -42,13 +42,13 @@ jobs:
         name: some_artifact
         path: ./artifact/
 
-    - name: Echo
-      run: |
-        echo ${{ $GIT_TAG }}
+          #    - name: Echo
+          #      run: |
+          #        echo ${{ $GIT_TAG }}
 
-          #    - name: Create a Release
-          #      uses: elgohr/Github-Release-Action@master
-          #      env:
-          #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          #      with:
-          #        args: ${{ $GIT_TAG }}
+    - name: Create a Release
+      uses: elgohr/Github-Release-Action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: ${{ $GIT_TAG }}
