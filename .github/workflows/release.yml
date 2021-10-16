@@ -2,8 +2,6 @@ name: "tagged-release"
 
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
 
@@ -16,10 +14,9 @@ jobs:
       run: |
         mkdir 'artifact'
         echo 'awesome!' >'artifact/some.txt'
-        echo 'meow'
         echo "SHA: ${GITHUB_SHA}"
-        echo ${{github.ref}}
 
+    - name: Transfer files to next job
     - uses: actions/upload-artifact@master
       with:
         name: some_artifact
@@ -33,6 +30,7 @@ jobs:
 
     - uses: actions/checkout@master
 
+    - name: Transfer files from previous job
     - uses: actions/download-artifact@master
       with:
         name: some_artifact
@@ -48,5 +46,3 @@ jobs:
         args: MyReleaseMessage
         files: |
           'artifact/some.txt'
-
-          ##aseotha
