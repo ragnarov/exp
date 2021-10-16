@@ -46,7 +46,6 @@ jobs:
 
     - name: Echo
       run: |
-        echo ${{ GIT_TAG }}
         echo ${{ $GIT_TAG }}
 
           #    - name: Create a Release
