@@ -1,5 +1,3 @@
-DUM DUM
-
 #============================== Syntax of Steps ================================
 #   - name: something 
 #           creates a new step with name 'something' when displayed on github
