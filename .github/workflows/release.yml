@@ -32,9 +32,9 @@ jobs:
     steps:
     - name: Do Nothing
       uses: actions/checkout@v2
-    - name: Set steps.get_version.outputs.VERSION
-      id: get_version
-      run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+    - name: Generate Release Info
+      id: get_info
+      run: echo ::set-output name=Tag::${GITHUB_REF#refs/tags/}
 
     - name: Transfer files from previous job
       uses: actions/download-artifact@master
@@ -48,4 +48,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        args: ${{ steps.get_version.outputs.VERSION }}
+        args: ${{ steps.get_info.outputs.Tag }}
+        entryPoint: ${{ steps.get_info.outputs.Tag }}

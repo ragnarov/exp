@@ -4,7 +4,7 @@
 #
 #     run:  this run will appear inside 'something' (on github) because,
 #           it doesn't have a '-' at the beginning
-#           use: same as run, will appear inside 'something' on github
+#     use:  same as run, will appear inside 'something' on github
 #
 # *   an object appearing inside 'steps:' after '- name:' will
 #     appear inside '- name:' when displayed on github
@@ -31,3 +31,4 @@
 #
 #     These are some simple notes that I created for myself
 #==============================================================================
+
